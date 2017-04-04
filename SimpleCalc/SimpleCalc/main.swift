@@ -38,7 +38,7 @@ func start() {
         if strlen(response) > 0 {
             response = response.trimmingCharacters(in: .whitespaces)
             switch response {
-            case "+", "-", "*", "/":
+            case "+", "-", "*", "/", "%":
                 mathOperator = response
                 regularMath = true
             case "count":
@@ -149,6 +149,9 @@ func doMath() {
             printResult(result: intOperands[0] * intOperands[1])
         case "/":
             printResult(result: intOperands[0] / intOperands[1])
+        case "%":
+            let result = intOperands[0].truncatingRemainder(dividingBy: intOperands[1])
+            printResult(result: result)
         default:
             print("Ivalid operator.")
         }
